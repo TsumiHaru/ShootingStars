@@ -6,7 +6,7 @@ if ($_SESSION['user']) {
 ?>
 <!-- Articles -->
 <section class="accueil">
-    <h2>Page d'accueil</h2>
+    <h2>Catalogue</h2>
     <section>
         <h3>Presentation site</h3>
         <article>

@@ -12,11 +12,7 @@
     <?php session_start(); 
     ?>
     
-    <?php
-    // Si l'utilisateur est connecté
-    if(isset($_SESSION['user'])){
-        
-    ?>
+
     
 <section class="nav">
     <section class="navfirst">
@@ -38,4 +34,4 @@
 </nav>
 
 </section>
-    <?php };?>
+    
