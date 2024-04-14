@@ -1,5 +1,6 @@
 body {
     background-color: #242535;
+    color: #fff;
     
 }
 
@@ -35,12 +36,21 @@ h4 {
     display: flex;
     justify-content: space-between;
     color: #fff;
+    border: 10px;
+    list-style: none;
+}
+
+.navbar li :hover {
+    color: #FFCA00;
+    transition: 0.5s;
+    text-decoration: underline;
 }
 
 .navfirst {
     display: flex;
     justify-content: left;
     color: #fff;
+    border: 10px;
 }
 
 li a {
@@ -54,4 +64,54 @@ li a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;  
+    border: #ffffff 1px solid;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;  
+    border: #ffffff 1px solid;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;  
+    border: #ffffff 1px solid;
+}
+
+.inscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;  
+    border: #ffffff 1px solid;
+}
+
+.connexion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;  
+    border: #ffffff 1px solid;
 }

@@ -7,8 +7,8 @@ if ($_SESSION['user']) {
 <!-- Articles -->
 <section class="accueil">
     <h2>Catalogue</h2>
-    <section>
-        <h3>Presentation site</h3>
+    <h3>Presentation site</h3>
+    <section class="screen">
         <article>
             <h4>Article 1</h4>
             <p>Contenu de l'article 1</p>

@@ -2,7 +2,7 @@
 $title = "Connexion";
 include('header.php');
 ?>
-<section class="test">
+<section class="connexion">
     <div class="">
         <div class="">
             <div class="">
@@ -14,13 +14,13 @@ include('header.php');
                             <?php if(isset($_GET['success'])){ echo "<p class='alert alert-success'>Votre inscription s'est correctement déroulée</p>";}  ?>
                             <form method="POST" action="<?php $_SERVER['DOCUMENT_ROOT']?>/ShootingStars/controller/userController.php">
                                 <div class="">
-                                    <label class="" for="login">Identifiant</label>
+                                    <label class="" for="login">Identifiant</label><br>
                                     <input name="login" type="text" id="login" class="form-control form-control-lg">
                                 </div>
 
                                 <div class="">
-                                    <label class="" for="password">Mot de passe</label>
-                                    <input name="password" type="password" id="psw" class="" />
+                                    <label class="" for="password">Mot de passe</label><br>
+                                    <input name="password" type="password" id="psw" /> <br>
                                 </div>
 
                                 <button class="" type="submit" name="bConnexion">Connexion</button>
