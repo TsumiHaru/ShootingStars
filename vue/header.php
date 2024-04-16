@@ -11,9 +11,6 @@
     <!-- On démarre la session dans le header, cela evite de le refaire sur chaque page -->
     <?php session_start(); 
     ?>
-    
-
-    
 <section class="nav">
     <section class="navfirst">
 <img class="logo" src="/shootingstars/asset/img/logo.png" alt="logo">
@@ -26,11 +23,13 @@
         <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/profil.php">Mon profil</a></li>
         <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pinscription.php">Inscription</a></li>
         <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pconnexion.php">Connexion</a></li>
+        <!-- On crée un bouton deconnexion -->
+        <form action="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/controller/userController.php" method="POST">
+        <input type="submit" value="Deconnexion" name="bDeconnect">
+        </form>
     </ul>
     <!-- Le bouton déconnexion apparaît -->
-    <form action="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/controller/userController.php" method="POST">
-        <input type="submit" value="Deconnexion" name="bDeconnect">
-    </form>
+    
 </nav>
 
 </section>

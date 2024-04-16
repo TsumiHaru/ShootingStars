@@ -10,16 +10,28 @@ if ($_SESSION['user']) {
     <h3>Presentation site</h3>
     <section class="screen">
         <article>
-            <h4>Article 1</h4>
-            <p>Contenu de l'article 1</p>
+            <a href="article.php" class="box-accueil">
+            <h4>The Constellation Aquila - Expedition</h4>
+            <img src="/shootingstars/asset/img/aquila1.jpg" alt="">
+            </a>
         </article>
         <article>
-            <h4>Article 2</h4>
-            <p>Contenu de l'article 2</p>
+            <a href="article.php" class="box-accueil">
+            <h4>The Terrapin - Tourring</h4>
+            <img src="/shootingstars/asset/img/terrapin1.jpg" alt="">
+            </a>
         </article>
         <article>
-            <h4>Article 3</h4>
-            <p>Contenu de l'article 3</p>
+            <a href="article.php" class="box-accueil">
+            <h4>The Pledge X1 - Tourring</h4>
+            <img src="/shootingstars/asset/img/pledge1.jpg" alt="">
+            </a>
+        </article>
+        <article>
+            <a href="article.php" class="box-accueil">
+            <h4>The 400I1 - Tourring</h4>
+            <img src="/shootingstars/asset/img/400i1.jpg" alt="">
+            </a>
         </article>
     </section>
 </section>

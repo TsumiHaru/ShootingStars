@@ -28,11 +28,6 @@ include('header.php');
                                         <input name="prenom" type="text" id="prenom" class="form-control form-control-lg" value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user']['prenom'];}?>"/><br>
                                     </div>
                                     <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="">Adresse </label><br>
-                                        <!-- Value permet d'afficher les données de l'utilisateur si il est -->
-                                        <input name="adresse" type="text" id="adresse" class="form-control form-control-lg"value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user']['adresse'];}?>"/><br>
-                                    </div>
-                                    <div class="form-outline form-white mb-4">
                                         <label class="form-label" for="">Date de naissance</label><br>
                                         <!-- Value permet d'afficher les données de l'utilisateur si il est -->
                                         <input name="dateDeNaissance" type="date" id="dateDeNaissance" class="form-control form-control-lg"  value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user']['date_naissance'];}?>"/><br>

@@ -115,3 +115,14 @@ li a {
     padding: 20px;  
     border: #ffffff 1px solid;
 }
+
+.box-accueil {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: #ffffff 1px solid;
+}

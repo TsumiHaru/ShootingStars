@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `danceclub`
+-- Base de données : `shootingstars`
 --
 
 -- --------------------------------------------------------
@@ -30,7 +30,12 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `media`;
 CREATE TABLE IF NOT EXISTS `media` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `lien` varchar(255) DEFAULT NULL,
+  `article_title` varchar(255) DEFAULT NULL,
+  `article_text` varchar(255) DEFAULT NULL,
+  `article_img1` varchar(255) DEFAULT NULL,
+  `article_img2` varchar(255) DEFAULT NULL,
+  
+
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -60,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`ID`, `username`, `password`, `role`, `date_creation`, `date_connexion`, `users_data_id`) VALUES
-(26, 'test', '202cb962ac59075b964b07152d234b70', 0, '2024-03-28 19:53:15', '2024-03-28 20:53:15', 82);
+(1, 'MehdiKo', '202cb962ac59075b964b07152d234b70', 0, '2024-03-28 19:53:15', '2024-03-28 20:53:15', 82);
 
 -- --------------------------------------------------------
 
@@ -75,7 +80,6 @@ CREATE TABLE IF NOT EXISTS `users_data` (
   `prenom` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `date_naissance` date NOT NULL,
-  `adresse` varchar(255) DEFAULT NULL,
   `media_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
@@ -86,8 +90,8 @@ CREATE TABLE IF NOT EXISTS `users_data` (
 -- Déchargement des données de la table `users_data`
 --
 
-INSERT INTO `users_data` (`id`, `nom`, `prenom`, `email`, `date_naissance`, `adresse`, `media_id`) VALUES
-(82, 'eaque', 'Magni nostrud eligen', 'sifeb@mailinator.com', '1980-12-13', 'Impedit dolores eli', NULL);
+INSERT INTO `users_data` (`id`, `nom`, `prenom`, `email`, `date_naissance`, `media_id`) VALUES
+(82, 'Korichi', 'Mehdi', 'mehdikorichi@hotmail.com', '1999-03-31', NULL);
 
 --
 -- Contraintes pour les tables déchargées
