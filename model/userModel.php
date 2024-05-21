@@ -1,20 +1,21 @@
+
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/ShootingStars/model/dbconnect.php");
 
+
 //Fonction insertion de données
-function insertData($nom,$prenom,$email,$dateDeNaissance,$adresse,$username,$password){
+function insertData($nom,$prenom,$email,$dateDeNaissance,$username,$password){
     //Récupération de la connexion à la BDD
     global $bdd;
     $role = 0;
     //on prépare la requete pour l'insertion des données personnels de l'utilisateur
-    $querysql = "INSERT INTO users_data (nom,prenom,date_naissance,email,adresse) VALUES (:nom,:prenom,:date_naissance,:email,:adresse)";
+    $querysql = "INSERT INTO users_data (nom,prenom,date_naissance,email) VALUES (:nom,:prenom,:date_naissance,:email)";
     //Prépare la requête SQL
     $stmtUserData = $bdd->prepare($querysql);
     //BindParam
     $stmtUserData->bindParam(":nom",$nom);
     $stmtUserData->bindParam(":prenom",$prenom);
     $stmtUserData->bindParam(":email",$email);
-    $stmtUserData->bindParam(":adresse",$adresse);
     $stmtUserData->bindParam(":date_naissance",$dateDeNaissance);
     //Exécuter la requête SQL
     try{
@@ -49,15 +50,15 @@ function insertData($nom,$prenom,$email,$dateDeNaissance,$adresse,$username,$pas
     if(isset($message)){return $message;}
 }
 
+
 // Fonction de vérification avant connexion
 function login($username,$password){
     //Récupération de la connexion à la BDD
     global $bdd;
     //Préparation de la requete qui permet de vérifier si l'utilisateur correspond à un utilisateur de base de données grâce a son username et password (vérification en bdd)
-    $sqlUser = "SELECT * FROM `users`  join users_data where users.users_data_id = users_data.id AND username= :username AND password= :password";
+    $sqlUser = "SELECT * FROM `users`  where  username= :username";
     $stmtUsers = $bdd->prepare($sqlUser);
     $stmtUsers->bindParam(":username",$username);
-    $stmtUsers->bindParam(":password",$password);
     try{
         $stmtUsers->execute();
      }catch(PDOException $e){
@@ -66,11 +67,26 @@ function login($username,$password){
      //On récupère les données de la base de données dans un tableau
      $user = $stmtUsers->fetch();
      //On stock le tableau dans une variable session
-     $_SESSION['user'] = $user;
+     
+        //On vérifie si le mot de passe correspond
+    if (isset($password)) {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+    }else{
+        $message = "Erreur 3";
+        header("Location: ../vue/pconnexion.php?message=".$message);
+    }
+    if (password_verify($password,$user['password'])){
+        $_SESSION['user'] = $user;
+        
+    }else{
+        $message = "Erreur 4";
+        header("Location: ../vue/pconnexion.php?message=".$message);
+    }
 }
 
+
 // Fonction update, qui permet de mettre a jour les données en base de données
-function update($id,$nom,$prenom,$email,$dateDeNaissance,$adresse,$username,$password){
+function update($id,$nom,$prenom,$email,$dateDeNaissance,$username,$password){
     //Récupération de la connexion à la BDD
     global $bdd;
     //On prépare la requete qui permet de modifier les données de connexion de l'utilisateur
@@ -135,4 +151,36 @@ function drop($id,$id2){
 function logout(){
    session_destroy();
 }
+
+
+// Fonction qui permet de récupérer les utilisateurs
+function getUsers(){
+    //Récupération de la connexion à la BDD
+    global $bdd;
+    //Préparation de la requete qui permet de récupérer les utilisateurs
+    $sql = "SELECT * FROM users_data";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute();
+    //On récupère les données de la base de données dans un tableau
+    $users = $stmt->fetchAll();
+    //On retourne les données
+    return $users;
+}
+
+
+// Fonction qui permet de récupérer les articles
+function getArticles(){
+    //Récupération de la connexion à la BDD
+    global $bdd;
+    //Préparation de la requete qui permet de récupérer les articles
+    $sql = "SELECT * FROM media";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute();
+    //On récupère les données de la base de données dans un tableau
+    $articles = $stmt->fetchAll();
+    //On retourne les données
+    return $articles;
+}
+
+
 ?>

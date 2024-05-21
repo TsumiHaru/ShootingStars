@@ -12,13 +12,14 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
     $nom = htmlspecialchars(strtolower(trim($_POST['nom'])));
     $prenom = htmlspecialchars(trim($_POST['prenom']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $adresse = htmlspecialchars(trim($_POST['adresse']));
     $dateDeNaissance = htmlspecialchars(trim($_POST['dateDeNaissance']));
     $username = htmlspecialchars(strtolower(trim($_POST['username'])));
     $password1 = htmlspecialchars(trim($_POST['password1']));
     $password2 = htmlspecialchars(trim($_POST['password2']));
     //Si les données récupérés ne sont pas vides
-    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($dateDeNaissance) && !empty($username) && !empty($adresse)) {
+    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($dateDeNaissance) && !empty($username)) {
+        //Si email deja utilisé
+       
         //Si le mot de passe et la confirmation correspondent
         if ($password1 === $password2) {
             // Si le mot de passe n'est pas vide lors de l'inscription
@@ -28,7 +29,7 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
                 // On transforme la date en objet date
                 $dateDeNaissance = date('Y-m-d', strtotime($dateDeNaissance));
                 // On transmet à la fonction "insertdata" les données à introduire en base de données, si l'inscription a rencontré un problème, on envoi un message a l'utilisateur
-                $message = insertData($nom, $prenom, $email, $dateDeNaissance, $adresse, $username, $password1);
+                $message = insertData($nom, $prenom, $email, $dateDeNaissance, $username, $password1);
                 if (isset($message)) {
                     //On transmet le message par l'url avec la redirection
                     header("Location: ../vue/pinscription.php?message=" . $message);
@@ -46,7 +47,7 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
                 //On récupère l'id de l'utilisateur dans la session
                 $id = $_SESSION['user']['ID'];
                 // On transmet les données à la fonction update (Si la fonction s'est correctement déroulée, on entre dans la condition)
-                if (update($id, $nom, $prenom, $email, $dateDeNaissance, $adresse, $username, $password1)) {
+                if (update($id, $nom, $prenom, $email, $dateDeNaissance, $username, $password1)) {
                     // On détruit l'ancienne session
                     session_destroy();
                     // On démarre une session 
@@ -67,17 +68,26 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
             $message = "Les mots de passes ne correspondent pas.";
         }
         echo $message;
+    }else{
+        //Si les champs ne sont pas remplis
+        header("Location: ../vue/pinscription.php?message=Veuillez remplir tous les champs.");
     }
     // Si l'utilisateur a appuyer sur le bouton connexion
 } else if (isset($_POST['bConnexion'])) {
     //On récupère le login et le mdp
     $username = htmlspecialchars(strtolower(trim($_POST['login'])));
     $password = md5(htmlspecialchars(trim($_POST['password'])));
+    if (!empty($username) && !empty($password) ) {
+        if 
     // On appelle la fonction login
     login($username, $password);
     // On le redirige vers l'accueil
-    header("Location: ../vue/paccueil.php");
-    exit;
+    header("Location: ../vue/paccueil.php?Connecté");
+    } else{
+        //Si les champs ne sont pas remplis
+        header("Location: ../vue/pconnexion.php?message=Veuillez remplir tous les champs.");
+        
+    }
     // Si l'utilisateur a appuyer sur le bouton modifier ses données
 } else if (isset($_POST['bEditUser'])) {
     header("Location: ../vue/pinscription.php");
@@ -99,5 +109,7 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
         //On redirige vers l'index
         header("Location: ../index.php");exit;
     }
+    //Si on est sur accueil affiche les articles
+    
     
 }

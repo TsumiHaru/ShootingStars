@@ -1,26 +1,32 @@
 <?php
 $title = "Article";
 include('header.php');
-//Si l'utilisateur est connecté
-if ($_SESSION['user']) {
+require($_SERVER['DOCUMENT_ROOT'] . "/shootingstars/model/userModel.php");
+
 ?>
 <!-- Articles -->
 <section class="article">
-    <h2>Article</h2>
-    <section class="top-article">
-    <img src="" alt="article-img">
-    <h4>article-title</h4>
-    </section>
-    <section class="bottom-article">
-        <p>Explore any distant horizons! The Constellation Aquila features a redesigned cockpit for maximum visibility, advanced sensors and an onboard Ursa rover for planetary exploration. Let’s see what’s out there!DISCLAIMER: These are our current vehicle specifications. Some of this may change during the 3D design and game balancing process.</p>
-        <img src="" alt="article-img-secondary">
-    </section>
-</section>
 <?php
-    //Sinon on le renvoi a la page de connexion
-} else {
-    header("Location: ../index.php");
-}
+    global $bdd;
+    $reponse = $bdd->query('SELECT * FROM media');
+    while ($donnees = $reponse->fetch()) {
+    ?>
+        
+    <?php
 
+    // Recuperer les articles de la base de données et les afficher
+    $articles = getArticles();
 
+    foreach ($articles as $article) {
+        // Affiche les articles
+        echo "<div class='article'>";
+        echo "<h4>" . $article['article_title'] . "</h4>";
+        echo "<a href=' /shootingstars/vue/article.php '>";
+        echo "<img src='" . $article['article_img1'] . "' alt='Article Image'>";
+        echo "</a>";
+        echo "</div>";
+        
+    }
+} 
 ?>
+</section>

@@ -21,12 +21,26 @@
         <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/paccueil.php">Accueil</a></li>
         <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/contact.php">Contact</a></li>
         <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/profil.php">Mon profil</a></li>
-        <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pinscription.php">Inscription</a></li>
-        <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pconnexion.php">Connexion</a></li>
-        <!-- On crée un bouton deconnexion -->
+        
+        
+        <!-- Si connecter, espace client et bouton deconnexion -->
+        <?php
+        if (isset($_SESSION['user'])) {
+        ?>
+        <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pinscription.php">Espace client</a></li>
         <form action="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/controller/userController.php" method="POST">
         <input type="submit" value="Deconnexion" name="bDeconnect">
         </form>
+        <?php
+        }else {
+        ?>
+        <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pinscription.php">Inscription</a></li>
+        <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pconnexion.php">Connexion</a></li>
+        <?php
+        }else isset($_SESSION['user']) {
+        
+        }
+        ?>
     </ul>
     <!-- Le bouton déconnexion apparaît -->
     

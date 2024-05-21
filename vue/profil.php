@@ -1,10 +1,10 @@
 <?php
 $title = "Page d'accueil";
 include('header.php');
+
 //Si l'utilisateur est connecté
 if ($_SESSION['user']) {
 ?>
-<section class="form">
     <h2>Mon profil</h2>
 <?php
 //Petit message pour indiquer son nom
@@ -29,6 +29,8 @@ if ($_SESSION['user']) {
         <input type="hidden" value="<?php echo $_SESSION['user']['ID']; ?>" name="id">
         <input type="submit" value="Supprimer mon compte" name="bDelete">
     </form>
+<!-- Ajouter un utilisateur -->
+
 </section>    
 
 <!-- Articles -->
@@ -37,6 +39,5 @@ if ($_SESSION['user']) {
 } else {
     header("Location: ../index.php");
 }
-
 
 ?>

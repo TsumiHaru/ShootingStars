@@ -6,7 +6,7 @@ if ($_SESSION['user']) {
 ?>
 <!-- Formulaire contact -->
 <section class="contact">
-    <h2>Contact</h2>
+    <h2>Bonjour</h2>
     <p>Vous pouvez nous contacter en remplissant le formulaire ci-dessous</p>
 <form action="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/controller/userController.php" method="POST">
 <p>Nom d'utilisateur</p>
@@ -15,7 +15,7 @@ if ($_SESSION['user']) {
 <input type="text" name="email" size="80"><br>
 <p>Demande de contact</p>
 <input type="text" name="contact" size="80" style="height: 130px;"><br>
-<input type="submit" value="Envoyez formulaire" name="bForm">
+<input class="calltoaction" type="submit" value="Envoyez" name="bForm">
 </form>
 </section>
 <?php
