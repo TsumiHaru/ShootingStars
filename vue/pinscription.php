@@ -14,7 +14,9 @@ include('header.php');
                                 <?php if(isset($_GET['message'])){ echo $_GET['message'];}  ?>
                                 <?php if(isset($_GET['error'])){ 
                                     ?> <p>Une erreur s'est produite</p>
-                                <?php }  ?>
+                                <?php } 
+                                var_dump($_SESSION['user']);
+                                ?>
                                 <form method="POST" action="<?php $_SERVER['DOCUMENT_ROOT']?>/ShootingStars/controller/userController.php">
                                 
                                     <div>

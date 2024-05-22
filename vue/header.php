@@ -37,8 +37,6 @@
         <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pinscription.php">Inscription</a></li>
         <li><a href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/ShootingStars/vue/pconnexion.php">Connexion</a></li>
         <?php
-        }else isset($_SESSION['user']) {
-        
         }
         ?>
     </ul>

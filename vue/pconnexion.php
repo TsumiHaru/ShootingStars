@@ -17,8 +17,8 @@ if (isset($_SESSION['user'])) {
                             <?php if(isset($_GET['success'])){ echo "<p class='alert alert-success'>Votre inscription s'est correctement déroulée</p>";}  ?>
                             <form method="POST" action="<?php $_SERVER['DOCUMENT_ROOT']?>/ShootingStars/controller/userController.php">
                                 <div>
-                                    <label class="" for="login">Identifiant</label><br>
-                                    <input require name="login" type="text" id="login" class="form-control form-control-lg">
+                                    <label class="" for="username">Identifiant</label><br>
+                                    <input require name="username" type="text" id="username" class="form-control form-control-lg">
                                 </div>
 
                                 <div>
@@ -29,16 +29,12 @@ if (isset($_SESSION['user'])) {
                                 <button type="submit" name="bConnexion">Connexion</button>
                             </form>
                         </div>
-                        <?php
-                        var_dump($_SESSION['user']);
-                        exit;
-                        ?>
                         <div>
                             <p>Pas de compte? 
                                 <a href="pinscription.php">Inscrivez-vous</a>
                             </p>
                             <p>Mot de passe oublié?
-                                <a href="pconnexion.php">Aidez moi</a>
+                                <a href="pmdp.php">Cliquez ici</a>
                             </p>
                         </div>
 

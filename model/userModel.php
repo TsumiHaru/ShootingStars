@@ -1,18 +1,19 @@
-
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/ShootingStars/model/dbconnect.php");
 
 
 //Fonction insertion de données
-function insertData($nom,$prenom,$email,$dateDeNaissance,$username,$password){
+function insertData($username,$password,$nom,$prenom,$email,$dateDeNaissance){
     //Récupération de la connexion à la BDD
     global $bdd;
     $role = 0;
     //on prépare la requete pour l'insertion des données personnels de l'utilisateur
-    $querysql = "INSERT INTO users_data (nom,prenom,date_naissance,email) VALUES (:nom,:prenom,:date_naissance,:email)";
+    $querysql = "INSERT INTO users (username,password,nom,prenom,email,date_naissance,) VALUES (:username,:password:nom,:prenom,:email,:date_naissance,)";
     //Prépare la requête SQL
     $stmtUserData = $bdd->prepare($querysql);
     //BindParam
+    $stmtUserData->bindParam(":username",$username);
+    $stmtUserData->bindParam(":password",$password);
     $stmtUserData->bindParam(":nom",$nom);
     $stmtUserData->bindParam(":prenom",$prenom);
     $stmtUserData->bindParam(":email",$email);
@@ -23,24 +24,19 @@ function insertData($nom,$prenom,$email,$dateDeNaissance,$username,$password){
     }catch(PDOException $e){
         $message = "Une erreur s'est produite dans l'insertion.";
     }
-
     if(isset($message)){return $message;}
     //On récupère le dernier enregistrement
-    $sqlLastUser = "SELECT id FROM users_data ORDER BY id DESC LIMIT 1";
+    $sqlLastUser = "SELECT id FROM users ORDER BY id DESC LIMIT 1";
     $stmtUsers = $bdd->prepare($sqlLastUser);
     $stmtUsers->execute();
     // On récupère l'id du dernier enregistrement
     $idUsers = $stmtUsers->fetchColumn();
-
     //On prépare la requete pour insèrer les données de connexion de l'utilisateur
-    $querysqlData = "INSERT INTO users (username,password,role,users_data_id) VALUES (:username,:password,:role,:users_data_id)";
-    //Prépare la requête SQL
+    $querysqlData = "INSERT INTO users (username,password,role) VALUES (:username,:password,:role)";
     $stmtUsersInsert = $bdd->prepare($querysqlData);
     $stmtUsersInsert->bindParam(":username",$username);
     $stmtUsersInsert->bindParam(":password",$password);
     $stmtUsersInsert->bindParam(":role",$role);
-    $stmtUsersInsert->bindParam(":users_data_id",$idUsers, PDO::PARAM_INT);
-    
     try{
        $stmtUsersInsert->execute();
     }catch(PDOException $e){
@@ -51,41 +47,36 @@ function insertData($nom,$prenom,$email,$dateDeNaissance,$username,$password){
 }
 
 
-// Fonction de vérification avant connexion
+// Fonction de connexion
 function login($username,$password){
     //Récupération de la connexion à la BDD
     global $bdd;
     //Préparation de la requete qui permet de vérifier si l'utilisateur correspond à un utilisateur de base de données grâce a son username et password (vérification en bdd)
-    $sqlUser = "SELECT * FROM `users`  where  username= :username";
+    $sqlUser = "SELECT * FROM users  where  username= :username";
     $stmtUsers = $bdd->prepare($sqlUser);
     $stmtUsers->bindParam(":username",$username);
     try{
         $stmtUsers->execute();
      }catch(PDOException $e){
-         $message = "Erreur 2";
+         $message = "Erreur de connexion";
      }
+     if(isset($message)){return $message;}
+
      //On récupère les données de la base de données dans un tableau
      $user = $stmtUsers->fetch();
-     //On stock le tableau dans une variable session
-     
+
         //On vérifie si le mot de passe correspond
-    if (isset($password)) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-    }else{
-        $message = "Erreur 3";
-        header("Location: ../vue/pconnexion.php?message=".$message);
-    }
     if (password_verify($password,$user['password'])){
         $_SESSION['user'] = $user;
-        
+        header("Location: ../vue/paccueil.phplogin=success");
     }else{
-        $message = "Erreur 4";
+        $message = "Mot de passe non vérifié";
         header("Location: ../vue/pconnexion.php?message=".$message);
     }
 }
 
 
-// Fonction update, qui permet de mettre a jour les données en base de données
+// Fonction update
 function update($id,$nom,$prenom,$email,$dateDeNaissance,$username,$password){
     //Récupération de la connexion à la BDD
     global $bdd;
@@ -106,7 +97,7 @@ function update($id,$nom,$prenom,$email,$dateDeNaissance,$username,$password){
     //On récupère l'id de la session de l'utilisateur
     $userId = $_SESSION['user']['id'];
     //On prépare la requete qui permet de modifier les données personnelles de l'utilisateur
-    $querysql = "UPDATE users_data SET nom = :nom,prenom= :prenom,date_naissance =:date_naissance, email = :email,adresse = :adresse WHERE id = :userId";
+    $querysql = "UPDATE users SET nom = :nom,prenom= :prenom,date_naissance =:date_naissance, email = :email WHERE id = :userId";
     //Prépare la requête SQL
     $stmtUserData = $bdd->prepare($querysql);
     //BindParam
@@ -114,7 +105,6 @@ function update($id,$nom,$prenom,$email,$dateDeNaissance,$username,$password){
     $stmtUserData->bindParam(":nom",$nom);
     $stmtUserData->bindParam(":prenom",$prenom);
     $stmtUserData->bindParam(":email",$email);
-    $stmtUserData->bindParam(":adresse",$adresse);
     $stmtUserData->bindParam(":date_naissance",$dateDeNaissance);
     //Exécuter la requête SQL
     try{

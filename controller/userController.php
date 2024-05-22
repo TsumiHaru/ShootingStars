@@ -1,11 +1,8 @@
 <?php
-/*
-L'ensemble des fonctions se trouvent dans le dossier model fichier "userModel.php"
-*/
-session_start();
+
 //On récupère notre model avec toutes les fonctions
 require($_SERVER['DOCUMENT_ROOT'] . "/shootingstars/model/userModel.php");
-
+session_start();
 // Si le bouton inscription à été envoyé OU le bouton édition à été envoyé
 if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
     //Récupération des données du formulaire
@@ -16,20 +13,20 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
     $username = htmlspecialchars(strtolower(trim($_POST['username'])));
     $password1 = htmlspecialchars(trim($_POST['password1']));
     $password2 = htmlspecialchars(trim($_POST['password2']));
+
     //Si les données récupérés ne sont pas vides
     if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($dateDeNaissance) && !empty($username)) {
         //Si email deja utilisé
        
         //Si le mot de passe et la confirmation correspondent
         if ($password1 === $password2) {
+            $password1 = password_hash($password1, PASSWORD_DEFAULT);
             // Si le mot de passe n'est pas vide lors de l'inscription
             if (!empty($password1) && isset($_POST['bInscription'])) {
-                // On crypte le mot de passe reçu
-                $password1 = md5($password1);
                 // On transforme la date en objet date
                 $dateDeNaissance = date('Y-m-d', strtotime($dateDeNaissance));
                 // On transmet à la fonction "insertdata" les données à introduire en base de données, si l'inscription a rencontré un problème, on envoi un message a l'utilisateur
-                $message = insertData($nom, $prenom, $email, $dateDeNaissance, $username, $password1);
+                $message = insertData($username, $password, $nom, $prenom, $email, $dateDeNaissance);
                 if (isset($message)) {
                     //On transmet le message par l'url avec la redirection
                     header("Location: ../vue/pinscription.php?message=" . $message);
@@ -75,21 +72,27 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
     // Si l'utilisateur a appuyer sur le bouton connexion
 } else if (isset($_POST['bConnexion'])) {
     //On récupère le login et le mdp
-    $username = htmlspecialchars(strtolower(trim($_POST['login'])));
-    $password = md5(htmlspecialchars(trim($_POST['password'])));
-    if (!empty($username) && !empty($password) ) {
-        if 
+    $username = htmlspecialchars(trim($_POST['username']));
+    $password = htmlspecialchars(trim($_POST['password']));
+    if (isset($username) && isset($password) ) {
     // On appelle la fonction login
-    login($username, $password);
-    // On le redirige vers l'accueil
-    header("Location: ../vue/paccueil.php?Connecté");
-    } else{
-        //Si les champs ne sont pas remplis
-        header("Location: ../vue/pconnexion.php?message=Veuillez remplir tous les champs.");
-        
-    }
+    login ($username,$password);
+        if (login ($username,$password)) {
+            //Si le message est défini, on redirige vers la page de connexion avec le message d'erreur
+            header("Location: ../vue/pconnexion.php?login=succes");
+            exit;
+        }else{
+            header("Location: ../vue/paccueil.php?login=error");
+            exit;
+        }
+        }else{
+            //Si les champs ne sont pas remplis
+            $error['empty'] = "Veuillez remplir tous les champs";
+            header("Location: ../vue/pconnexion.php?message=" . $error['empty']);
+            exit;
+            }
     // Si l'utilisateur a appuyer sur le bouton modifier ses données
-} else if (isset($_POST['bEditUser'])) {
+}else if (isset($_POST['bEditUser'])) {
     header("Location: ../vue/pinscription.php");
     exit;
     // Si l'utilisateur a appuyer sur le bouton deconnexion
