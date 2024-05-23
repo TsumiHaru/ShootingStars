@@ -1,7 +1,7 @@
 <?php
 $title = "Article";
 include('header.php');
-require($_SERVER['DOCUMENT_ROOT'] . "/shootingstars/model/userModel.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/model/userModel.php");
 ?>
 <!-- Articles -->
 <section class="screen">

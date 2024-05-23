@@ -38,6 +38,23 @@ body {
     list-style: none;
 }
 
+.navbar input {
+    color: #FFCA00;
+    background-color: transparent;  ;
+    text-decoration: none;
+    margin-right: 20px;
+    border: 1px solid #FFCA00;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.navbar form input :hover {
+    color: #000000;
+    
+    transition: 0.5s;
+    text-decoration: underline;
+}
+
 .navbar li :hover {
     color: #FFCA00;
     transition: 0.5s;
@@ -157,14 +174,17 @@ h4 {
     border: #ffffff 1px solid;
 }
 
-.form {
+.contact_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px;
-    padding: 20px;  
-    border: #ffffff 1px solid;
+}
+
+.calltoaction {
+    background-color: #FFCA00;
+    border-radius: 10px;
+    padding: 5px;
 }
 /* Inscription*/
 
@@ -185,6 +205,8 @@ h4 {
     color: #5C628A;
     background-color: #FFCA00;
     border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
 }
 .input input{
     background-color: transparent;
@@ -194,6 +216,17 @@ h4 {
     width: 30%;
     margin: 3px;
     padding: 3px;
+}
+
+.redirect a {
+    
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
+    
 }
 
 /* Connexion*/
@@ -242,4 +275,15 @@ h4 {
     margin: 20px;
     padding: 20px;
     border: #ffffff 1px solid;
+    border-radius: 10px;
+}
+
+.admin_cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    border: #ffffff 1px solid;
+    border-radius: 10px;
 }

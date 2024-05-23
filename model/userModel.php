@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/ShootingStars/model/dbconnect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/model/dbconnect.php");
 
 // Fonction insertion de données
 function insertData($username, $password, $nom, $prenom, $email, $date_naissance, $role) {
@@ -34,17 +34,13 @@ function login($username, $password) {
         return "Erreur de connexion : " . $e->getMessage();
     }
     $user = $stmtUsers->fetch();
-    if ($user) {
-        var_dump($user["password"]);
-        exit;
-        if (password_verify($password, $user["password"])) {
+    if ($user) {  
+        if(password_verify($password, $user["password"])){
             $_SESSION["user"] = $user;
-            return null; // Login reussi
         } else {
-            var_dump($password);
-            exit;
+            
             return "Mot de passe incorrect.";
-        }
+        } 
     } else {
         return "Nom d'utilisateur incorrect.";
     }

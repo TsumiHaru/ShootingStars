@@ -13,7 +13,7 @@ include('header.php');
             <?php } 
            // var_dump($_SESSION['user']);
             ?>
-            <form method="POST" action="<?php $_SERVER['DOCUMENT_ROOT']?>/ShootingStars/controller/userController.php">
+            <form method="POST" action="<?php $_SERVER['DOCUMENT_ROOT']?>/controller/userController.php">
             
                 <div>
                     <label for="">Nom</label><br>
@@ -23,7 +23,7 @@ include('header.php');
                 <div>
                     <label for="">Prénom</label><br>
                     <!-- Value permet d'afficher les données de l'utilisateur si il est -->
-                    <input name="prenom" type="text" id="prenom" " value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user']['prenom'];}?>"/><br>
+                    <input name="prenom" type="text" id="prenom"  value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user']['prenom'];}?>"/><br>
                 </div>
                 <div>
                     <label class="form-label" for="">Date de naissance</label><br>
@@ -33,7 +33,7 @@ include('header.php');
                 <div>
                     <label class="form-label" for="">Email</label><br>
                     <!-- Value permet d'afficher les données de l'utilisateur si il est -->
-                    <input name="email" type="text" id="email" " value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user']['email'];}?>"/><br>
+                    <input name="email" type="text" id="email"  value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user']['email'];}?>"/><br>
                 </div>
                 <div>
                     <label class="form-label" for="">Nom d'utilisateur</label><br>
@@ -55,9 +55,8 @@ include('header.php');
                     <button type="submit" name="bInscription">S'inscrire</button>
                <?php }
                 ?>
-                <div>
-                    <p>Déjà un compte? <a href="pconnexion.php">Connectez-vous</a>
-                    </p>
+                <div class="redirect">
+                    <a href="pconnexion.php">Déjà inscrit ?</a> 
                 </div>
                 </form>
         </div>

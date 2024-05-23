@@ -1,6 +1,6 @@
 <?php
 // On récupère notre model avec toutes les fonctions
-require($_SERVER['DOCUMENT_ROOT'] . "/shootingstars/model/userModel.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/model/userModel.php");
 session_start();
 
 if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
@@ -11,11 +11,19 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
     $username = htmlspecialchars(strtolower(trim($_POST['username'])));
     $password1 = htmlspecialchars(trim($_POST['password1']));
     $password2 = htmlspecialchars(trim($_POST['password2']));
+    $regexemail = "/^[_a-zA-Z0-9-]+(.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+.)+[a-zA-Z]{2,4}$/";
     $role = 0;
 
     if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($date_naissance) && !empty($username)) {
         if ($password1 === $password2) {
             $password_hashed = password_hash($password1, PASSWORD_DEFAULT);
+            if(!preg_match($regexemail, $email)){
+                //Si l'adresse mail n'est pas valide
+                $error["mail"] = "L'adresse email n'est pas valide.";
+                //On transmet le message par l'url avec la redirection
+                header("Location: ../vue/pinscription.php?message=" . $error["mail"]);
+                exit;
+            }
             if (!empty($password1) && isset($_POST['bInscription'])) {
                 $date_naissance = date('Y-m-d', strtotime($date_naissance));
                 $message = insertData($username, $password_hashed, $nom, $prenom, $email, $date_naissance, $role);
@@ -28,7 +36,7 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
                 exit;
             } else {
                 if (empty($password1)) {
-                    $password1 = $_SESSION['user']['password'];
+                    $password1 = $_SESSION['user']['password']; 
                 }
                 $id = $_SESSION['user']['ID'];
                 if (update($id, $nom, $prenom, $email, $date_naissance, $username, $password1)) {
@@ -55,7 +63,7 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
     $password = htmlspecialchars(trim($_POST['password']));
     // On appelle la fonction login
     $message = login($username, $password);
-    if ($message === true) {
+    if ($message === false) {
         header("Location: ../vue/paccueil.php?login=success");
         exit;
     } else {

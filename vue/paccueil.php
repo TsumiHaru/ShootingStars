@@ -1,7 +1,7 @@
 <?php
 $title = "Page d'accueil";
 include('header.php');
-require($_SERVER['DOCUMENT_ROOT'] . "/shootingstars/model/userModel.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/model/userModel.php");
 ?>
     <!-- Articles -->
 <section class="accueil">
@@ -17,7 +17,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/shootingstars/model/userModel.php");
    foreach ($articles as $article) {
        echo "<div class='article'>";
        echo "<h4>" . htmlspecialchars($article['article_title']) . "</h4>";
-       echo "<a href='/shootingstars/vue/article.php?id=" . urlencode($article['ID']) . "'>";
+       echo "<a href='/vue/article.php?id=" . urlencode($article['ID']) . "'>";
        echo "<img src='" . htmlspecialchars($article['article_img1']) . "' alt='Article Image'>";
        echo "</a>";
        echo "</div>";
