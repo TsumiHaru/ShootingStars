@@ -1,0 +1,49 @@
+/* Mediaqueries pour mobile*/
+
+@media screen and (max-width: 500px) {
+    
+    body {
+        width: 100%;
+    }
+    .nav img{
+       display: none;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .article img {
+       width: 80%;
+       height: 80%;
+    }
+    .article {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }   
+    .article h4 {
+        font-size: 1em;
+    }
+    .article_page_seconde {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .profil_card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .admin_card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}

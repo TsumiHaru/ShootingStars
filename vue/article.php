@@ -2,31 +2,32 @@
 $title = "Article";
 include('header.php');
 require($_SERVER['DOCUMENT_ROOT'] . "/shootingstars/model/userModel.php");
-
 ?>
 <!-- Articles -->
-<section class="article">
+<section class="screen">
+<section class="article_page">
 <?php
-    global $bdd;
-    $reponse = $bdd->query('SELECT * FROM media');
-    while ($donnees = $reponse->fetch()) {
-    ?>
-        
-    <?php
+global $bdd;
 
-    // Recuperer les articles de la base de données et les afficher
-    $articles = getArticles();
-
-    foreach ($articles as $article) {
-        // Affiche les articles
-        echo "<div class='article'>";
-        echo "<h4>" . $article['article_title'] . "</h4>";
-        echo "<a href=' /shootingstars/vue/article.php '>";
-        echo "<img src='" . $article['article_img1'] . "' alt='Article Image'>";
-        echo "</a>";
+if (isset($_GET['id'])) {
+    $articleId = intval($_GET['id']); // Securisé l'id
+    $query = $bdd->prepare('SELECT * FROM media WHERE ID = ?');
+    $query->execute([$articleId]);
+    $article = $query->fetch();
+    if ($article) {
+        // Affichage de l'article
+        echo "<img src='" . htmlspecialchars($article['article_img1']) . "' alt='Article Image'>";
+        echo "<h4>" . htmlspecialchars($article['article_title']) . "</h4>";
+        echo "<div class='article_page_seconde'>";
+        echo "<p>" . htmlspecialchars($article['article_text']) . "</p>";
+        echo "<img src='" . htmlspecialchars($article['article_img2']) . "' alt='Article Image'>";
         echo "</div>";
-        
+    } else {
+        echo "Article non trouver.";
     }
-} 
+} else {
+    echo "Pas d'id specifié.";
+}
 ?>
+</section>
 </section>

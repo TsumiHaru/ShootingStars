@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/*General*/
+
+body {
+    background-color: #242535;
+    color: #fff;
+    font-family: 'Mulish', sans-serif;
+}
+
+/*Navigation*/
+
+.logo {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    margin-right: 20px;
+}
+
+.title {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    justify-content: left;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    border: 10px;
+    list-style: none;
+}
+
+.navbar li :hover {
+    color: #FFCA00;
+    transition: 0.5s;
+    text-decoration: underline;
+}
+
+.navfirst {
+    display: flex;
+    justify-content: left;
+    color: #fff;
+    border: 10px;
+}
+
+li a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/*Page accueil*/
+
+.article {
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.article h4 {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    color: white;
+    background-color: #223871aa; 
+    padding: 10px;
+    padding-left: 80px;
+    right: 0;
+    display: flex;
+    justify-content: left;
+    border-radius: 5px; 
+    font-size: 20px; 
+}
+
+
+
+h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    justify-content: left;
+}
+
+.accueil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding-top : 20px;  
+    border: #ffffff 1px solid;
+    border-radius: 20px;
+}
+/*Page articles*/
+
+.article_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.article_page h4 {
+    background-color: #223871aa; 
+    padding: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.article_page img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.article_page_seconde {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+}
+.article_page_seconde img {
+    width: 50%;
+    height: 50%;
+    margin: 20px;
+    border-radius: 200px;
+}
+
+/*Contact*/
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;  
+    border: #ffffff 1px solid;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;  
+    border: #ffffff 1px solid;
+}
+/* Inscription*/
+
+.inscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+.input p{
+    color: #5C628A;
+}
+
+.input button{
+    color: #5C628A;
+    background-color: #FFCA00;
+    border-radius: 10px;
+}
+.input input{
+    background-color: transparent;
+    color: white;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    width: 30%;
+    margin: 3px;
+    padding: 3px;
+}
+
+/* Connexion*/
+
+.connexion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    
+}
+
+.box-accueil {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: #ffffff 1px solid;
+}
+
+/*Profil*/
+
+.profil_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: #ffffff 1px solid;
+}
+
+/*Admin*/
+
+.admin_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: #ffffff 1px solid;
+}
