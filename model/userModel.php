@@ -86,15 +86,6 @@ function drop($id, $id2) {
     } catch (PDOException $e) {
         return "Erreur lors de la suppression du compte utilisateur : " . $e->getMessage();
     }
-    $sql2 = "DELETE FROM users_data WHERE id = :idUser";
-    $stmtUserData2 = $bdd->prepare($sql2);
-    $stmtUserData2->bindParam(":idUser", $id2);
-    try {
-        $stmtUserData2->execute();
-        return true;
-    } catch (PDOException $e) {
-        return "Erreur lors de la suppression des données personnelles de l'utilisateur : " . $e->getMessage();
-    }
 }
 
 // Fonction de déconnexion
@@ -127,4 +118,38 @@ function getArticles() {
         return [];
     }
 }
+
+/* Function Admin update user
+function updateUser($id, $username, $email) {
+    global $bdd;
+
+    $sql = "UPDATE users SET username = :username, email = :email WHERE ID = :id";
+    $stmt = $bdd->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':email', $email);
+
+    try {
+        $stmt->execute();
+        return "User updated successfully.";
+    } catch (PDOException $e) {
+        return "Error updating user: " . $e->getMessage();
+    }
+}
+
+// Function Admin delete user
+function deleteUser($id) {
+    global $bdd;
+
+    $sql = "DELETE FROM users WHERE ID = :id";
+    $stmt = $bdd->prepare($sql);
+    $stmt->bindParam(':id', $id);
+
+    try {
+        $stmt->execute();
+        return "User deleted successfully.";
+    } catch (PDOException $e) {
+        return "Error deleting user: " . $e->getMessage();
+    }
+}*/
 ?>

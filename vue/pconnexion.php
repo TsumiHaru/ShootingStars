@@ -3,7 +3,7 @@ $title = "Connexion";
 include('header.php');
 // Si utilisateur déjà connecté
 if (isset($_SESSION['user'])) {
-    echo "<section class='connexion'><h2>Vous êtes déjà connecté</h2></section>";
+    echo "<section class='connexion'><h2>Vous êtes connecté!</h2></section>";
 } else {
     ?>
     <section class="connexion">

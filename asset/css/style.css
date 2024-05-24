@@ -172,6 +172,7 @@ h4 {
     margin: 20px;
     padding: 20px;  
     border: #ffffff 1px solid;
+    border-radius: 10px;
 }
 
 .contact_form {
@@ -213,7 +214,7 @@ h4 {
     color: white;
     border: 1px solid #fff;
     border-radius: 10px;
-    width: 30%;
+    
     margin: 3px;
     padding: 3px;
 }
@@ -263,6 +264,16 @@ h4 {
     margin: 20px;
     padding: 20px;
     border: #ffffff 1px solid;
+    border-radius: 10px;
+}
+
+.profil_card form input {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin: 3px;
+    padding: 3px;
 }
 
 /*Admin*/
@@ -282,6 +293,7 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 20px;
     padding: 20px;
     border: #ffffff 1px solid;

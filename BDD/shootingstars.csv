@@ -1,14 +1,14 @@
 "ID","article_title","article_text","article_img1","article_img2"
 "1","The Constellation Aquila - Expedition","Explore any distant horizons! The Constellation Aquila features a redesigned cockpit for maximum visibility, advanced sensors and an onboard Ursa rover for planetary exploration. Let’s see what’s out there!
-DISCLAIMER: These are our current vehicle speci","/ShootingStars/asset/img/aquila1.jpg","/ShootingStars/asset/img/aquila2.jpg"
+DISCLAIMER: These are our current vehicle speci","/asset/img/aquila1.jpg","/asset/img/aquila2.jpg"
 "2","The Terrapin - Expedition","Explore any distant horizons! The Constellation Aquila features a redesigned cockpit for maximum visibility, advanced sensors and an onboard Ursa rover for planetary exploration. Let’s see what’s out there!
-DISCLAIMER: These are our current vehicle speci","/ShootingStars/asset/img/terrapin1.jpg","/ShootingStars/asset/img/terrapin2.jpg"
+DISCLAIMER: These are our current vehicle speci","/asset/img/terrapin1.jpg","/asset/img/terrapin2.jpg"
 "3","The Pledge X1 - Tourring","Explore any distant horizons! The Constellation Aquila features a redesigned cockpit for maximum visibility, advanced sensors and an onboard Ursa rover for planetary exploration. Let’s see what’s out there!
-DISCLAIMER: These are our current vehicle speci","/ShootingStars/asset/img/pledge1.jpg","/ShootingStars/asset/img/pledge2.jpg"
+DISCLAIMER: These are our current vehicle speci","/asset/img/pledge1.jpg","/asset/img/pledge2.jpg"
 "4","The 400i1 - Tourring","Explore any distant horizons! The Constellation Aquila features a redesigned cockpit for maximum visibility, advanced sensors and an onboard Ursa rover for planetary exploration. Let’s see what’s out there!
-DISCLAIMER: These are our current vehicle speci","/ShootingStars/asset/img/400i2.jpg","/ShootingStars/asset/img/400i1.jpg"
+DISCLAIMER: These are our current vehicle speci","/asset/img/400i2.jpg","/asset/img/400i1.jpg"
 "5","The 600i1 - Tourring","Explore any distant horizons! The Constellation Aquila features a redesigned cockpit for maximum visibility, advanced sensors and an onboard Ursa rover for planetary exploration. Let’s see what’s out there!
-DISCLAIMER: These are our current vehicle speci","/ShootingStars/asset/img/600i1.jpg","/ShootingStars/asset/img/600i1.jpg"
+DISCLAIMER: These are our current vehicle speci","/asset/img/600i1.jpg","/asset/img/600i1.jpg"
 "ID","username","password","nom","prenom","email","role","date_naissance","date_creation","date_connexion"
-"3","user","$2y$10$yemc2qkdMndyYcrh43w8V.7FeUNr3A9odzg46iB9RPE","utili","Sateur","user@hotmail.com","0","6511-05-04","0000-00-00","0000-00-00"
-"2","admin","$2y$10$oRr0nNJ0MX.j5Rat40MJ8uJn8QbdwWan8NZ8vFy9Ape","admin","istrateur","admin@hotmail.com","0","1111-11-11","0000-00-00","0000-00-00"
+"9","admin","$2y$10$5wulYJ89VPjQxa8nicZNyOL3gDQzHRXZrzJ6IlFHKqN91xVRlLGZC","adminname","adminsurname","admin@hotmail.com","1","1997-02-13","0000-00-00","0000-00-00"
+"8","user","$2y$10$kzrJ1LGbukbxdsSGyvuiIObyrFpU13WXqhlxvri2NxFv4yxXnC5zS","korichi","Mehdi","mehdikorichi@hotmail.com","0","1999-03-31","0000-00-00","0000-00-00"

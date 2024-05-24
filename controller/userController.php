@@ -85,5 +85,24 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
         header("Location: ../index.php");
         exit;
     }
+} elseif (isset($_POST['bAdminDeleteUser'])) {
+    $id = $_POST['id'];
+    $message = deleteUser($id);
+    header("Location: ../vue/admin.php?message=" . urlencode($message));
+    exit;
+}elseif (isset($_POST['bContact'])) {
+    $username = htmlspecialchars(trim($_POST['username']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $contact = htmlspecialchars(trim($_POST['contact']));
+    header("Location: ../vue/contact2.php");
+    exit;
 }
+/*elseif (isset($_POST['bUpdateUser'])) {
+    $id = $_POST['id'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $message = updateUser($id, $username, $email);
+    header("Location: /admin.php?message=" . urlencode($message));
+    exit;
+}*/
 ?>

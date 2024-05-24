@@ -8,7 +8,7 @@ if (isset($_SESSION["user"])) {
 <section class="profil_card">
     <h2>Mon profil</h2>
     <?php
-    echo "<p>Bonjour " . $_SESSION['user']['username'] . "</p>";
+    echo "<p>Bonjour : " . $_SESSION['user']['username'] . "</p>";
     echo "<p>Nom : " . $_SESSION['user']['nom'] . "</p>";
     echo "<p>Prenom : " . $_SESSION['user']['prenom'] . "</p>";
     echo "<p>Email : " . $_SESSION['user']['email'] . "</p>";

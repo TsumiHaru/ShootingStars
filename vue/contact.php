@@ -1,5 +1,5 @@
 <?php
-$title = "Page d'accueil";
+$title = "Contact";
 include('header.php');
 //Si l'utilisateur est connecté
 if ($_SESSION['user']) {
@@ -15,7 +15,7 @@ if ($_SESSION['user']) {
             <input type="text" name="email" size="50"><br>
             <p>Demande de contact</p>
             <input type="text" name="contact" size="50" style="height: 130px;"><br>
-            <input class="calltoaction" type="submit" value="Envoyez" name="bForm">
+            <input class="calltoaction" type="submit" value="Envoyez" name="bContact">
         </form>
 </section>
 <?php
