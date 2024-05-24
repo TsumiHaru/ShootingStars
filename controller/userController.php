@@ -81,8 +81,8 @@ if (isset($_POST['bInscription']) || isset($_POST['bEditUserData'])) {
     $id = $_POST['id'];
     $id2 = $_SESSION['user']['users_data_id'];
     if (drop($id, $id2)) {
-        logout();
-        header("Location: ../index.php");
+        $message = logout();
+        header("Location: ../index.php?message=" . urlencode($message));
         exit;
     }
 } elseif (isset($_POST['bAdminDeleteUser'])) {

@@ -33,7 +33,6 @@
         <!-- Si connecter, espace client et bouton deconnexion -->
         <?php
         if (isset($_SESSION['user'])) {
-            
         ?>
         <form action="<?php $_SERVER['DOCUMENT_ROOT'] ?>/controller/userController.php" method="POST">
         <input type="submit" value="Deconnexion" name="bDeconnect">

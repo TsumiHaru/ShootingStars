@@ -83,6 +83,7 @@ function drop($id, $id2) {
     $stmtUserData->bindParam(":id", $id);
     try {
         $stmtUserData->execute();
+        return true;
     } catch (PDOException $e) {
         return "Erreur lors de la suppression du compte utilisateur : " . $e->getMessage();
     }
