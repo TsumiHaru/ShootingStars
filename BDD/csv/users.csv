@@ -1,3 +1,2 @@
-"ID","username","password","nom","prenom","email","role","date_naissance","date_creation","date_connexion"
 "9","admin","$2y$10$5wulYJ89VPjQxa8nicZNyOL3gDQzHRXZrzJ6IlFHKqN91xVRlLGZC","adminname","adminsurname","admin@hotmail.com","1","1997-02-13","0000-00-00","0000-00-00"
-"8","user","$2y$10$kzrJ1LGbukbxdsSGyvuiIObyrFpU13WXqhlxvri2NxFv4yxXnC5zS","koriichi","Mehdi","mehdikorichi@hotmail.com","0","1999-03-31","0000-00-00","0000-00-00"
+"8","user","$2y$10$kzrJ1LGbukbxdsSGyvuiIObyrFpU13WXqhlxvri2NxFv4yxXnC5zS","korichi","Mehdi","mehdikorichi@hotmail.com","0","1999-03-31","0000-00-00","0000-00-00"
